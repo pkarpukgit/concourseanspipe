@@ -1,2 +1,2 @@
 [inv]
-localhost
+localhost ansible_connection=local
