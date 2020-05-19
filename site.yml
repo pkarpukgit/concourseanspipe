@@ -3,10 +3,20 @@
   become_method: sudo
   gather_facts: no
   tasks:
-  - name: "set 0600 permisssions"
-    file:
-      path: "ssh_keys/*"
-      mode: '0600'
+  - block:
+    - name: "list files in ssh_keys dir"
+      shell: "ls -lrt | grep -v total | awk {'print $NF'}"
+      register: keys_list
+
+    - set_fact:
+        ssh_keys: "keys_list.stdout_lines"  
+
+    - name: "set 0600 permissions"
+      file:
+        path: "ssh_keys/{{ item }}"
+        mode: '0600'
+      with_items: "{{ ssh_keys }}"
+
     delegate_to: localhost
 
   - name: "collect facts"
