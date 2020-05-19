@@ -9,7 +9,7 @@
       register: keys_list
 
     - set_fact:
-        ssh_keys: "{{ keys_list.stdout_lines }}"  
+        ssh_keys: "{{ keys_list.stdout }}"  
 
     - name: "set 0600 permissions"
       file:
