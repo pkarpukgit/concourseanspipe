@@ -3,19 +3,24 @@
   gather_facts: no
   connection: local
   tasks:
-  - name: "change permissions for ssh keys"
-    block:
-    - name: "list files in ssh_keys dir"
-      shell: "ls -lrt ssh_keys/ | grep -v total | awk {'print $NF'}"
-      register: keys_list
-    - debug: var=keys_list
-    - set_fact:
-        ssh_keys: "{{ keys_list.stdout_lines }}"
-    - name: "set 0600 permissions"
-      file:
-        path: "ssh_keys/{{ item }}"
-        mode: '0600'
-      with_items: "{{ ssh_keys }}"
+  - name: "create ssh keys files"
+    copy:
+      path: ssh_keys/oem-il-iaas-keypair-test.pem
+      content: "{{ test_env_ssh_key }}"
+      mode: 0600
+          #  - name: "change permissions for ssh keys"
+          #    block:
+          #    - name: "list files in ssh_keys dir"
+          #      shell: "ls -lrt ssh_keys/ | grep -v total | awk {'print $NF'}"
+          #      register: keys_list
+          #    - debug: var=keys_list
+          #    - set_fact:
+          #        ssh_keys: "{{ keys_list.stdout_lines }}"
+          #    - name: "set 0600 permissions"
+          #      file:
+          #        path: "ssh_keys/{{ item }}"
+          #        mode: '0600'
+          #      with_items: "{{ ssh_keys }}"
 
 
 - hosts: all
@@ -28,5 +33,3 @@
     register: results
 
   - debug: var=results
-
-  - debug: var=aes-key-global

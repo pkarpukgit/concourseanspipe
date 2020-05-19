@@ -1,3 +1,3 @@
 [test_hosts]
-11.217.33.69        ansible_user=ubuntu   ansible_ssh_private_key_file=/tmp/build/put/source-code/ssh_keys/oem-il-iaas-keypair-test.pem ans_host=Malte_Monitoring
-11.217.33.232        ansible_user=ubuntu   ansible_ssh_private_key_file=/tmp/build/put/source-code/ssh_keys/oem-il-iaas-keypair-test.pem ans_host=oemil-infracheck
+11.217.33.69        ansible_user=ubuntu   ansible_ssh_private_key_file=ssh_keys/oem-il-iaas-keypair-test.pem ans_host=Malte_Monitoring
+11.217.33.232        ansible_user=ubuntu   ansible_ssh_private_key_file=ssh_keys/oem-il-iaas-keypair-test.pem ans_host=oemil-infracheck
