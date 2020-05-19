@@ -3,7 +3,14 @@
   become_method: sudo
   gather_facts: no
   tasks:
+  - name: "set 0600 permisssions"
+    file:
+      path: "ssh_keys/*"
+      mode: '0600'
+    delegate_to: localhost
+
   - name: "collect facts"
     setup:
     register: results
+
   - debug: var=results
