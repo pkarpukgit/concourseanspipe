@@ -7,7 +7,7 @@
   tasks:
   - name: "create ssh keys files"
     copy:
-      path: ssh_keys/oem-il-iaas-keypair-test.pem
+      dest: ssh_keys/oem-il-iaas-keypair-test.pem
       content: "{{ test_env_ssh_key }}"
       mode: 0600
           #  - name: "change permissions for ssh keys"
