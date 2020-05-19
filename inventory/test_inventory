@@ -20,5 +20,5 @@
 11.217.37.6        ansible_user=centos   ansible_ssh_private_key_file=ssh_keys/oem-il-iaas-keypair-test.pem ansible_host=waf-test-green-node-01
 11.217.35.139        ansible_user=ubuntu   ansible_ssh_private_key_file=ssh_keys/oem-il-iaas-keypair-test.pem ansible_host=cko-devel1-wob2
 11.217.33.22        ansible_user=ubuntu   ansible_ssh_private_key_file=ssh_keys/oem-il-iaas-keypair-test.pem ansible_host=oemil-reftest
-11.217.33.69        ansible_user=   ansible_ssh_private_key_file=ssh_keys/oem-il-iaas-keypair-test.pem ansible_host=Malte_Monitoring
+11.217.33.69        ansible_user=ubuntu   ansible_ssh_private_key_file=ssh_keys/oem-il-iaas-keypair-test.pem ansible_host=Malte_Monitoring
 11.217.33.232        ansible_user=ubuntu   ansible_ssh_private_key_file=ssh_keys/oem-il-iaas-keypair-test.pem ansible_host=oemil-infracheck

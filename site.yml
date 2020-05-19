@@ -3,21 +3,22 @@
   become_method: sudo
   gather_facts: no
   tasks:
-  - block:
+  - name: "change permissions for ssh keys"
+    block:
     - name: "list files in ssh_keys dir"
-      shell: "ls -lrt ssh_keys | grep -v total | awk {'print $NF'}"
+      shell: "ls -lrt ssh_keys/ | grep -v total | awk {'print $NF'}"
       register: keys_list
-
+    - debug: var=keys_list
     - set_fact:
-        ssh_keys: "{{ keys_list.stdout }}"  
-
+        ssh_keys: "{{ keys_list.stdout_lines }}"  
     - name: "set 0600 permissions"
       file:
         path: "ssh_keys/{{ item }}"
         mode: '0600'
       with_items: "{{ ssh_keys }}"
-
     delegate_to: localhost
+    become: false
+    run_once: true
 
   - name: "collect facts"
     setup:
