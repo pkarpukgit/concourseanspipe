@@ -18,10 +18,6 @@
       with_items: "{{ ssh_keys }}"
 
 
-
-
-
-
 - hosts: all
   become: yes
   become_method: sudo
