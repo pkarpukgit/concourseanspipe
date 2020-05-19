@@ -28,3 +28,5 @@
     register: results
 
   - debug: var=results
+
+  - debug: var=aes-key-global
